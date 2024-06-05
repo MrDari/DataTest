@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interfaz con Navbar</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">STATS REPO</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Datos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Gráficos</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <div class="container shadow mt-2 p-3 mb-5 bg-white rounded">
+    <h2 class="mt-4 mb-4">Máximos goleadores temporada 2023-2024 en La Liga</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+    <table class="table table-responsive-md table-striped table-bordered">
+      <thead class="table-dark">
+      <tr>
+        @for (column of columnas; track column){
+
+          <th >{{column}}</th>
+        }
+      </tr>
+      </thead>
+      <tbody>
+        @for (goleador of goleadores; track goleador){
+        <tr>
+            <td ><img src="{{goleador.player.photo}}" style="max-width: 50%; height: auto;"></td>
+            <td >{{goleador.player.firstname}}</td>
+            <td >{{goleador.player.lastname}}</td>
+            <td ><img src="{{goleador.statistics[0].team.logo}}" style="max-width: 50%; height: auto;"></td>
+            <td >{{goleador.statistics[0].goals.total}}</td>
+          </tr>
+          }
+      </tbody>
+    </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
